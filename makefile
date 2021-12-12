@@ -1,9 +1,9 @@
 CC = g++
 CFLAGS = -c -Wall
 
-all: ./trpo/calculator
+all: ./calculator
 
-./trpo/calculator: ./build/main.o ./build/Unit_Test_calculator.o ./build/pch.o
+./calculator: ./build/main.o ./build/Unit_Test_calculator.o ./build/pch.o
 			$(CC) $(CFLAGS) -o ./trpo/calculator ./build/main.o ./build/Unit_Test_calculator.o
 build/pch.o
 
@@ -22,9 +22,9 @@ pch.o: ./calculator/pch.cpp
 			
 			
 clean:
-		rm -rf build/*.0 ./trpo/calculator
+		rm -rf build/*.0 ./calculator
 		
 		
 run:
-		./trpo/calculator
+		./calculator
 
