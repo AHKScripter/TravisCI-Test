@@ -5,17 +5,17 @@ SRC_DIR = ./calculator
 TEST_DIR = ./Unit_Test_calculator
 FLAGS =-Wall -std=c++11
 
-all: $(BIN_DIR)/main
+all: $(BIN_DIR)
 
 $(BIN_DIR)/main: $(BUILD_DIR)/main.o 
-	g++ $(FLAGS) $(BUILD_DIR)/main.o -o $(BIN_DIR)/main.o
+	g++ $(FLAGS) $(BUILD_DIR)/main.o -o $(BIN_DIR)
 
 $(BUILD_DIR)/main.o:
 	g++ $(FLAGS) -c $(SRC_DIR)/main.cpp -o $(BUILD_DIR)/main.o
 	
 run: 
-	./bin/main
+	./bin
 
 clean:
 	rm -f build/*.o
-	rm -f bin/main
+	rm -f bin
