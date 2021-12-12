@@ -1,27 +1,21 @@
-CC = g++
-CFLAGS = -c -Wall
+.PHONY: clean all test run runtest
+BIN_DIR = ./bin
+BUILD_DIR = ./build
+SRC_DIR = ./calculator
+TEST_DIR = ./Unit_Test_calculator
+FLAGS =-Wall -std=c++11
 
-all: ./calculator
+all: $(BIN_DIR)/main
 
-./calculator: ./build/main.o ./build/Unit_Test_calculator.o ./build/pch.o
-			$(CC) $(CFLAGS) -o ./trpo/calculator ./build/main.o ./build/Unit_Test_calculator.o build/pch.o
+$(BIN_DIR)/main: $(BUILD_DIR)/main.o 
+	g++ $(FLAGS) $(BUILD_DIR)/main.o -o $(BIN_DIR)/main
 
-main.o: ./calculator/main.cpp
-			$(CC) $(CFLAGS) -o build/main.o -c src/main.cpp –lm
-				
-				
-Unit_Test_calculator.o: ./calculator/Unit_Test_calculator.cpp
-			$(CC) $(CFLAGS) -o build/Unit_Test_calculator.o -c src/Unit_Test_calculator.cpp –lm
-			
+$(BUILD_DIR)/main.o:
+	g++ $(FLAGS) -c $(SRC_DIR)/main.cpp -o $(BUILD_DIR)/main.o
+	
+run: 
+	./bin/main
 
-pch.o: ./calculator/pch.cpp
-			$(CC) $(CFLAGS) -o build/pch.o -c src/pch.cpp –lm
-			
-			
 clean:
-		rm -rf build/*.0 ./calculator
-		
-		
-run:
-		./calculator
-
+	rm -f build/*.o
+	rm -f bin/main
