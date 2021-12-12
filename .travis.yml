@@ -1,10 +1,7 @@
-language: cpp
-compiler: g++
-
-dist: xenial
+  language: c
+compiler: gcc
 
 script:
-  - git ls-files calcApp/ | xargs clang-format -i && git diff --exit-code
   - make
   - make test
   - make runtest
